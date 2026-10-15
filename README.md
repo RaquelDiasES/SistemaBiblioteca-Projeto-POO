@@ -34,4 +34,10 @@ configuração da aplicação.
 
 ## Equipe
 
-Integrantes: adicionar os nomes dos integrantes do grupo.
+Integrantes: 
+
+- Eduardo Quintiliano
+- João Victor Nunes
+- Marcelo Porto
+- Raquel Dias
+- Ricardo Galvão
