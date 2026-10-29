@@ -6,7 +6,6 @@ Projeto acadêmico desenvolvido para a disciplina de
 Programação Orientada a Objetos (POO), com o objetivo
 de aplicar os principais conceitos de orientação a
 objetos por meio de um sistema de gestão de biblioteca.
-kkkkkkkkk
 
 ## Objetivos
 
