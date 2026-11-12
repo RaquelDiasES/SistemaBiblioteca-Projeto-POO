@@ -1,3 +1,5 @@
+package model;
+
 public class Usuario {
 
     // Atributos do usuário
