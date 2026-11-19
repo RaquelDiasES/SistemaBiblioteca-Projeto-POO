@@ -1,6 +1,8 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class Usuario {
 
@@ -9,7 +11,7 @@ public class Usuario {
     // Atributos do usuário
     private String id;
     private String nome;
-    private List<Emprestimo> emprestimos;
+    private final List<Emprestimo> emprestimos;
 
     // MÉTODO CONSTRUTOR
     public Usuario(String id, String nome) {
