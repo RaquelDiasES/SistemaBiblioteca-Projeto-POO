@@ -8,7 +8,9 @@ public class Usuario {
 
     // MÉTODO CONSTRUTOR
     public Usuario(String id, String nome) {
-
+        Pessoa3
+          
+        main
         this.id = id;
         this.nome = nome;
     }
@@ -27,6 +29,9 @@ public class Usuario {
     @Override
     public String toString() {
         
+        return "Usuario [ID=" + id + ", Nome=" + nome + "]";
+    }
+}
         return "Usuario [ID=" + id + ", Nome=" + nome + "]";
     }
 }
