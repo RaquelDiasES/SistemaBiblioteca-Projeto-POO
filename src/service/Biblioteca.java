@@ -82,7 +82,7 @@ public class Biblioteca {
     public List<Livro> listarLivrosDisponiveis() {
         List<Livro> disponiveis = new ArrayList<>();
         for (Livro livro : livros) {
-            if (livro.podeSerEmprestado()) {
+            if (livro.podeSerEmprestado() && livro.isDisponivel()) {
                 disponiveis.add(livro);
             }
         }
