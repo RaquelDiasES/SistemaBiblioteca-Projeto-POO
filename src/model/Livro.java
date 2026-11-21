@@ -37,7 +37,7 @@ public abstract class Livro {
         return disponivel;
     }
 
-    @Override
+    Override
     public String toString() {
         String statusDisponibilidade;
         if (this instanceof LivroConsultaLocal) {
@@ -46,7 +46,7 @@ public abstract class Livro {
             statusDisponibilidade = disponivel ? "SIM" : "NÃO";
         }
 
-        return getClass().getSimpleName() + " [ Código=" + codigo
+        return "[ Código=" + codigo
                 + ", Título=" + titulo + ", Autor=" + autor
                 + ", Disponível=" + statusDisponibilidade + " ]";
     }

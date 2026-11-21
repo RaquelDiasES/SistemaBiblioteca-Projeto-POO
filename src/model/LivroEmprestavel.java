@@ -10,7 +10,7 @@ public class LivroEmprestavel extends Livro implements Emprestavel {
 
     @Override
     public boolean podeSerEmprestado() {
-        return true; 
+        return isDisponivel(); 
     }
 
     @Override
