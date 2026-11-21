@@ -4,4 +4,5 @@ target/
 out/
 .idea/
 .vscode/
+/src/model/oracleJdk-27/
 .DS_Store

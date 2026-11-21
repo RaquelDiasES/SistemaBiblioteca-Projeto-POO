@@ -15,11 +15,11 @@ public class LivroEmprestavel extends Livro implements Emprestavel {
 
     @Override
     public void emprestar() {
-        // A lógica de atualizar a disponibilidade será feita na Etapa 2
+        atualizarDisponibilidade(false);
     }
 
     @Override
     public void devolver() {
-        // A lógica de atualizar a disponibilidade será feita na Etapa 2
+        atualizarDisponibilidade(true);
     }
 }
