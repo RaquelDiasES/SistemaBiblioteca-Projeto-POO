@@ -39,8 +39,15 @@ public abstract class Livro {
 
     @Override
     public String toString() {
-        return getClass().getSimpleName() + " [Código=" + codigo
+        String statusDisponibilidade;
+        if (this instanceof LivroConsultaLocal) {
+            statusDisponibilidade = "NÃO (consulta local)";
+        } else {
+            statusDisponibilidade = disponivel ? "SIM" : "NÃO";
+        }
+
+        return getClass().getSimpleName() + " [ Código=" + codigo
                 + ", Título=" + titulo + ", Autor=" + autor
-                + ", Disponível=" + (disponivel ? "sim" : "não") + "]";
+                + ", Disponível=" + statusDisponibilidade + " ]";
     }
 }
