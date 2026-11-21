@@ -79,9 +79,19 @@ public class Main {
 
     private static void cadastrarLivro() {
         System.out.print("Tipo (1 - Emprestável, 2 - Consulta local): ");
-        LivroFactory.Tipo tipo = lerOpcao() == 2
-                ? LivroFactory.Tipo.CONSULTA_LOCAL
-                : LivroFactory.Tipo.EMPRESTAVEL;
+        int tipoOpcao = lerOpcao();
+        LivroFactory.Tipo tipo;
+        switch (tipoOpcao) {
+            case 1:
+                tipo = LivroFactory.Tipo.EMPRESTAVEL;
+                break;
+            case 2:
+                tipo = LivroFactory.Tipo.CONSULTA_LOCAL;
+                break;
+            default:
+                throw new IllegalArgumentException("Tipo de livro inválido. Digite 1 ou 2.");
+        }
+
         String codigo = lerTexto("Código: ");
         String titulo = lerTexto("Título: ");
         String autor = lerTexto("Autor: ");
