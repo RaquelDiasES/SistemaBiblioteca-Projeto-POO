@@ -40,7 +40,7 @@ public abstract class Livro {
     @Override
     public String toString() {
         String statusDisponibilidade;
-        if (!podeSerEmprestado()) {
+        if (this instanceof LivroConsultaLocal) {
             statusDisponibilidade = "NÃO (consulta local)";
         } else {
             statusDisponibilidade = disponivel ? "SIM" : "NÃO";
