@@ -17,6 +17,8 @@ public class Main {
     private static final DateTimeFormatter FORMATO = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
     public static void main(String[] args) {
+        carregarLivrosIniciais();
+        
         int opcao;
         do {
             exibirMenu();
@@ -32,6 +34,19 @@ public class Main {
         System.out.println("Até logo!");
     }
 
+    // Acervo inicial da biblioteca
+    private static void carregarLivrosIniciais() {
+        biblioteca.cadastrarLivro(LivroFactory.Tipo.EMPRESTAVEL, "E001", "Java Efetivo", "Joshua Bloch");
+        biblioteca.cadastrarLivro(LivroFactory.Tipo.EMPRESTAVEL, "E002", "Código Limpo", "Robert C. Martin");
+        biblioteca.cadastrarLivro(LivroFactory.Tipo.EMPRESTAVEL, "E003", "Padrões de Projeto", "Erich Gamma");
+        biblioteca.cadastrarLivro(LivroFactory.Tipo.EMPRESTAVEL, "E004", "Estática: Mecânica para Engenharia", "Irving Shames");
+        biblioteca.cadastrarLivro(LivroFactory.Tipo.EMPRESTAVEL, "E005", "Introdução à Engenharia", "Mark Holtzapple e W. Dan Reece");
+        biblioteca.cadastrarLivro(LivroFactory.Tipo.CONSULTA_LOCAL, "C001", "Enciclopédia de Engenharia", "Vários Autores");
+        biblioteca.cadastrarLivro(LivroFactory.Tipo.CONSULTA_LOCAL, "C002", "Normas Técnicas ABNT", "ABNT");
+        biblioteca.cadastrarLivro(LivroFactory.Tipo.CONSULTA_LOCAL, "C003", "A Engenharia e os Engenheiros na Sociedade Brasileira", "Pedro Carlos da Silva Telles");
+    }
+
+    
     private static void exibirMenu() {
         System.out.println();
         System.out.println("===== SISTEMA DE BIBLIOTECA =====");
