@@ -21,8 +21,11 @@ public class Main {
         
         int opcao;
         do {
+			limparTela();
             exibirMenu();
             opcao = lerOpcao();
+			
+			limparTela();
             try {
                 executar(opcao);
             } catch (MaterialIndisponivelException | LimiteEmprestimosException e) {
@@ -30,8 +33,26 @@ public class Main {
             } catch (IllegalArgumentException e) {
                 System.out.println("Erro: " + e.getMessage());
             }
+			
+			if (opcao != 0) {
+                pausar();
+			}
         } while (opcao != 0);
         System.out.println("Até logo!");
+    }
+	
+	private static void limparTela() {
+        try {
+            new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
+        } catch (Exception e) {
+            System.out.print("\033[H\033[2J");
+            System.out.flush();
+        }
+    }
+	
+	private static void pausar() {
+        System.out.print("\nPressione Enter para continuar...");
+        scanner.nextLine();
     }
 
     // Acervo inicial da biblioteca
