@@ -37,7 +37,7 @@ public abstract class Livro {
         return disponivel;
     }
 
-    @Override
+    Override
     public String toString() {
         String statusDisponibilidade;
         if (this instanceof LivroConsultaLocal) {
