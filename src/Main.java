@@ -78,7 +78,8 @@ public class Main {
         System.out.println("4 - Registrar devolução");
         System.out.println("5 - Listar livros disponíveis");
         System.out.println("6 - Listar todos os livros");
-        System.out.println("7 - Listar empréstimos");
+        System.out.println("7 - Listar usuários");
+        System.out.println("8 - Listar empréstimos");
         System.out.println("0 - Sair");
         System.out.print("Escolha: ");
     }
@@ -105,6 +106,9 @@ public class Main {
                 imprimirLivros(biblioteca.getLivros());
                 break;
             case 7:
+                listarUsuarios();
+                break;
+            case 8:
                 listarEmprestimos();
                 break;
             case 0:
@@ -112,6 +116,41 @@ public class Main {
             default:
                 System.out.println("Opção inválida.");
         }
+    }
+	
+	private static void listarUsuarios() {
+        List<Usuario> usuarios = biblioteca.getUsuarios();
+        if (usuarios.isEmpty()) {
+            System.out.println("Nenhum usuário cadastrado.");
+            return;
+        }
+
+        for (Usuario usuario : usuarios) {
+            String livrosTexto = formatarLivrosDoUsuario(usuario);
+            System.out.println("[" + usuario.getNome() + "] [ " + usuario.getId() + " ] [ " + livrosTexto + " ]");
+        }
+    }
+
+    private static String formatarLivrosDoUsuario(Usuario usuario) {
+        List<Emprestimo> emprestimos = usuario.getEmprestimos();
+        if (emprestimos.isEmpty()) {
+            return "nenhum";
+        }
+
+        StringBuilder sb = new StringBuilder();
+        for (Emprestimo emp : emprestimos) {
+            if (emp.estaAtivo()) {
+                if (sb.length() > 0) {
+                    sb.append(", ");
+                }
+                sb.append(emp.getLivro().getTitulo());
+            }
+        }
+
+        if (sb.length() == 0) {
+            return "nenhum";
+        }
+        return sb.toString();
     }
 
     private static void cadastrarLivro() {
