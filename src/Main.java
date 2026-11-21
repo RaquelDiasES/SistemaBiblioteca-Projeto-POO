@@ -3,6 +3,7 @@ import exceptions.MaterialIndisponivelException;
 import factory.LivroFactory;
 import model.Emprestimo;
 import model.Livro;
+import model.LivroConsultaLocal;
 import model.Usuario;
 import service.Biblioteca;
 
@@ -161,8 +162,30 @@ public class Main {
             System.out.println("Nenhum livro para mostrar.");
             return;
         }
+
+        boolean imprimiuEmprestavel = false;
         for (Livro livro : livros) {
-            System.out.println(livro);
+            if (!(livro instanceof LivroConsultaLocal)) {
+                if (!imprimiuEmprestavel) {
+                    System.out.println("Livros emprestáveis:");
+                    imprimiuEmprestavel = true;
+                }
+                System.out.println(livro);
+            }
+        }
+
+        boolean imprimiuConsultaLocal = false;
+        for (Livro livro : livros) {
+            if (livro instanceof LivroConsultaLocal) {
+                if (!imprimiuConsultaLocal) {
+                    if (imprimiuEmprestavel) {
+                        System.out.println();
+                    }
+                    System.out.println("Livros de consulta local:");
+                    imprimiuConsultaLocal = true;
+                }
+                System.out.println(livro);
+            }
         }
     }
 
