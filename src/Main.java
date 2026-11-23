@@ -19,14 +19,14 @@ public class Main {
 
     public static void main(String[] args) {
         carregarLivrosIniciais();
-        
+
         int opcao;
         do {
-			limparTela();
+            limparTela();
             exibirMenu();
             opcao = lerOpcao();
-			
-			limparTela();
+
+            limparTela();
             try {
                 executar(opcao);
             } catch (MaterialIndisponivelException | LimiteEmprestimosException e) {
@@ -34,15 +34,15 @@ public class Main {
             } catch (IllegalArgumentException e) {
                 System.out.println("Erro: " + e.getMessage());
             }
-			
-			if (opcao != 0) {
+
+            if (opcao != 0) {
                 pausar();
-			}
+            }
         } while (opcao != 0);
         System.out.println("Até logo!");
     }
-	
-	private static void limparTela() {
+
+    private static void limparTela() {
         try {
             new ProcessBuilder("cmd", "/c", "cls").inheritIO().start().waitFor();
         } catch (Exception e) {
@@ -50,8 +50,8 @@ public class Main {
             System.out.flush();
         }
     }
-	
-	private static void pausar() {
+
+    private static void pausar() {
         System.out.print("\nPressione Enter para continuar...");
         scanner.nextLine();
     }
@@ -68,7 +68,6 @@ public class Main {
         biblioteca.cadastrarLivro(LivroFactory.Tipo.CONSULTA_LOCAL, "C003", "A Engenharia e os Engenheiros na Sociedade Brasileira", "Pedro Carlos da Silva Telles");
     }
 
-    
     private static void exibirMenu() {
         System.out.println();
         System.out.println("===== SISTEMA DE BIBLIOTECA =====");
@@ -117,8 +116,24 @@ public class Main {
                 System.out.println("Opção inválida.");
         }
     }
-	
-	private static void listarUsuarios() {
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+    private static final String VERDE = "\u001B[32m";
+    private static final String VERMELHO = "\u001B[31m";
+    private static final String RESET = "\u001B[0m";
+
+    private static String formatarLinhaLivro(Livro livro) {
+        String texto = livro.toString();
+        boolean disponivelParaEmprestimo = livro.podeSerEmprestado() && livro.isDisponivel();
+
+        if (disponivelParaEmprestimo) {
+            return VERDE + texto + RESET;
+        }
+        return VERMELHO + texto + RESET;
+    }
+    ////////////////////////////////////////////////////////////////////////////////////////////////
+
+    private static void listarUsuarios() {
         List<Usuario> usuarios = biblioteca.getUsuarios();
         if (usuarios.isEmpty()) {
             System.out.println("Nenhum usuário cadastrado.");
@@ -209,7 +224,7 @@ public class Main {
                     System.out.println("Livros emprestáveis:");
                     imprimiuEmprestavel = true;
                 }
-                System.out.println(livro);
+                System.out.println(formatarLinhaLivro(livro));
             }
         }
 
@@ -223,7 +238,7 @@ public class Main {
                     System.out.println("Livros de consulta local:");
                     imprimiuConsultaLocal = true;
                 }
-                System.out.println(livro);
+                System.out.println(formatarLinhaLivro(livro));
             }
         }
     }
